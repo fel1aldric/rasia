@@ -1,0 +1,53 @@
+<ion-content padding>
+	<img src="assets/icon.png" class="image">
+	<ion-item>
+		<div style="text-align: center; width: 100vw">
+			<h1 style="font-size: 15vw">{{calculateheur()}}:{{calculateminute()}}:{{calculersecond()}}</h1>
+		</div>
+	</ion-item>
+	<ion-button color="success" expand="block" (click)="parle()">Heure actuel</ion-button>
+	<ion-item>
+		<div style="text-align: center; width: 100vw">
+			<h2>Appel en absence</h2>
+		</div>
+	</ion-item>
+	<ion-card  *ngFor="let contact of recordsFound">
+        <ion-card-header  *ngIf="contact['name']" >
+          <ion-card-title>{{contact["name"]}}</ion-card-title>
+        </ion-card-header>
+      
+        <ion-card-content>
+            <strong>{{contact["number"]}}</strong>
+        </ion-card-content>
+    </ion-card>
+    <ion-button color="success" expand="block" (click)="parlelist()">Appel en absence</ion-button>
+    <ion-item>
+	    <div style="text-align: center; width: 100vw">
+			<h2>Battery status: {{baterystat.level}}%</h2>
+		</div>
+	</ion-item>
+    <ion-progress-bar value="{{baterystat.level/100}}"></ion-progress-bar>
+    <ion-button color="success" expand="block" (click)="batterystat()">Battery stat</ion-button>
+	<ion-button color="success" expand="block" (click)="startmicro()">startmicro</ion-button>
+	<ion-item>
+	    <div style="text-align: center; width: 100vw">
+			<h5>Url: {{url}}</h5>
+		</div>
+	</ion-item>
+	<ion-button color="success" expand="block" (click)="configurl()">ConfigUrl</ion-button>
+	<ion-list>
+        <ion-list-header>
+          Telephone hardware info
+        </ion-list-header>
+        <ion-item>
+          <ion-label>
+            Temperature : {{device.temperature}}
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            Temperature environement : {{device.temperaturesalle}}
+          </ion-label>
+        </ion-item>
+    </ion-list>
+</ion-content>
